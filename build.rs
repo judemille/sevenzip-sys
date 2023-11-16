@@ -20,6 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let bindings = bindgen::Builder::default()
         .header("unified.h")
+        .default_macro_constant_type(bindgen::MacroTypeVariation::Signed)
         .clang_arg(format!("-I{}", include_dir.display()))
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()?;
